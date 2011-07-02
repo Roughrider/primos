@@ -6,6 +6,13 @@ var vigaVertical : GameObject;
 var camaraPrincipal:Camera;
 var creando:boolean= false;
 var ultimoCreado:GameObject;
+var objetosCreados:Array;
+
+
+function Start() { 
+	objetosCreados = new Array();
+}
+
 
 function FixedUpdate () {
    var posicion :Vector3 = camaraPrincipal.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x,Input.mousePosition.y,25));
@@ -28,12 +35,15 @@ function FixedUpdate () {
 			GUI_seleccionpieza2.crearTipoObjeto = 0;
 			creando = true;
 		}
+		
+		objetosCreados.Push(ultimoCreado);
 	}
 	else {
 		if (ultimoCreado != null && !ultimoCreado.GetComponent(ObjetosEscenario).colocada) {
 			Destroy(ultimoCreado);
 			creando=false;
 			Screen.showCursor = true;
+			objetosCreados.Pop();
 		}
 	}
 	
