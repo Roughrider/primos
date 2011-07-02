@@ -16,8 +16,8 @@ function OnMouseExit () {
 
 
 function OnGUI() {
-	GUI.depth = profundidad;
-	GUI.DrawTexture(Rect(0, Screen.height - 58, Screen.width, 58), tex);
+	//GUI.depth = profundidad;
+	//GUI.DrawTexture(Rect(0, Screen.height - 58, Screen.width, 58), tex);
 	texturaOnMouse.pixelInset = (Rect(0, 0, Screen.width, 58));
 	
 }

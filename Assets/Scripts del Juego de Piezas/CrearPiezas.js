@@ -1,6 +1,8 @@
 var GUI_Barra:GUI_barra;
 var GUI_seleccionpieza1:GUI_seleccionpieza; //Script del primer boton - Viga Horizontal
 var GUI_seleccionpieza2:GUI_seleccionpieza;//Script del segundo boton - Viga Vertical
+var GUI_Clear:GUI_seleccionpieza;//Script del segundo boton - Viga Vertical
+
 var vigaHorizontal : GameObject;
 var vigaVertical : GameObject;
 var camaraPrincipal:Camera;
@@ -45,6 +47,8 @@ function FixedUpdate () {
 			Screen.showCursor = true;
 			objetosCreados.Pop();
 		}
+
+	
 	}
 	
 	if (creando){
@@ -57,6 +61,15 @@ function FixedUpdate () {
 			creando = false;
 		}
 	
+	}
+	
+		//Boton especial clear
+	if (GUI_Clear.crearTipoObjeto == -1)  {
+		GUI_Clear.crearTipoObjeto = 0;
+		for (var obj : GameObject in objetosCreados) {
+			Destroy(obj);
+		}
+			
 	}
 }
 
