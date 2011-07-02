@@ -11,8 +11,8 @@ function FixedUpdate () {
    var posicion :Vector3 = camaraPrincipal.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x,Input.mousePosition.y,25));
 	posicion.z = 0;
 //	Debug.Log("POSICION : " +posicion +"   RATON : " +Input.mousePosition );
-	if (!GUI_Barra.encimaBarra ) {
-		if (GUI_seleccionpieza1.crearTipoObjeto == 2 && !GUI_seleccionpieza1.encimaBarra) {
+	if (!EstaEnCimaDeGUI()) {
+		if (GUI_seleccionpieza1.crearTipoObjeto == 2 ) {
 		
 			Screen.showCursor = false;
 			ultimoCreado = Instantiate(vigaHorizontal, posicion, vigaHorizontal.transform.rotation);
@@ -20,13 +20,20 @@ function FixedUpdate () {
 			creando = true;
 		}
 		
-		if (GUI_seleccionpieza2.crearTipoObjeto == 3  && !GUI_seleccionpieza2.encimaBarra) {
+		if (GUI_seleccionpieza2.crearTipoObjeto == 3 ) {
 		
 			Screen.showCursor = false;
 			ultimoCreado = Instantiate(vigaVertical, posicion, vigaVertical.transform.rotation);
 			
 			GUI_seleccionpieza2.crearTipoObjeto = 0;
 			creando = true;
+		}
+	}
+	else {
+		if (ultimoCreado != null && !ultimoCreado.GetComponent(ObjetosEscenario).colocada) {
+			Destroy(ultimoCreado);
+			creando=false;
+			Screen.showCursor = true;
 		}
 	}
 	
@@ -41,4 +48,10 @@ function FixedUpdate () {
 		}
 	
 	}
+}
+
+function EstaEnCimaDeGUI() {
+	
+	return (GUI_Barra.encimaBarra || GUI_seleccionpieza1.encimaBarra || GUI_seleccionpieza2.encimaBarra);
+
 }
