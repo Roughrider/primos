@@ -52,10 +52,7 @@ function FixedUpdate () {
 	}
 	
 	if (creando){
-		if(Input.GetMouseButtonDown(0)) {
-		//	ultimoCreado.rotation
-		}
-		
+				
 		if(Input.GetMouseButtonUp(0))	{
 			ultimoCreado.GetComponent(ObjetosEscenario).colocada=true;
 			Screen.showCursor = true;

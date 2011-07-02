@@ -11,10 +11,14 @@ function Start() {
 
 function FixedUpdate () {
 	if (!colocada) {
+		if(!Input.GetMouseButton(0)) {
+			var posicion :Vector3 =camaraPrincipal.camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x,Input.mousePosition.y,25));
+			posicion.z =0;
+			
+			transform.position = posicion;
 		
-		var posicion :Vector3 =camaraPrincipal.camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x,Input.mousePosition.y,25));
-		posicion.z =0;
-		
-		transform.position = posicion;
+		} else {
+			transform.Rotate(Vector3(0,0,10) * Time.deltaTime * 10);
+		}		
 	}
 }
