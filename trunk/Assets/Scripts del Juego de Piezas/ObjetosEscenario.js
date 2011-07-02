@@ -6,6 +6,9 @@ var camaraPrincipal:GameObject;
 var texturaIconoRotar:Texture;
 var rotando = false;
 var congela = false; // Simplemente una variable para que no se superpongan en el mismo frame el evento de soltar boton y boton vigente.
+var retardo : float = 0; //Retardo para que con un simple click no rote
+var retardoRotacion = 0.03;
+var retardadoYa = false;
 
 function Start() {
 	camaraPrincipal =  GameObject.Find("Camara");
@@ -23,9 +26,15 @@ function FixedUpdate () {
 		
 		} else  {
 			if (!congela) {
-				Debug.Log("ROTANDO");
-				rotando = true;
-				transform.Rotate(Vector3(0,0,10) * Time.deltaTime * 10);
+				retardo += Time.deltaTime;
+				Debug.Log("ROTANDO "+retardo);
+				
+				if (retardo >=retardoRotacion || retardadoYa) {
+					retardadoYa = true;
+					rotando = true;
+					transform.Rotate(Vector3(0,0,10) * Time.deltaTime * 10);
+					retardo = 0;
+				}
 			}
 						
 		}		
