@@ -54,7 +54,11 @@ function FixedUpdate () {
 	if (creando){
 				
 		if(Input.GetMouseButtonUp(0))	{
+			Debug.Log("Crear Piezas SALE");
 			ultimoCreado.GetComponent(ObjetosEscenario).colocada=true;
+			ultimoCreado.GetComponent(ObjetosEscenario).rotando=false;
+			ultimoCreado.GetComponent(ObjetosEscenario).congela=true;
+	
 			Screen.showCursor = true;
 			ultimoCreado.rigidbody.useGravity = true;
 			ultimoCreado.rigidbody.isKinematic =false;
