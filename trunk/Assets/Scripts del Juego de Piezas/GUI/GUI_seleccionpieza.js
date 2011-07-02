@@ -2,6 +2,8 @@ var cursorImage : Texture;
 private var cursorImagen: boolean;
 var tipoBoton:int; //1 = play / 2= VigaHorizontal / 3=VigaVerical
 var bola:GameObject;
+var texturaOver:Texture;
+var texturaOut:Texture;
 
 
 var crearTipoObjeto:int; //0= NINGUNA, 2= VigaHorizontal, 
@@ -13,6 +15,7 @@ function OnMouseOver () {
 	Screen.showCursor = false;
 	cursorImagen=true;
 	encimaBarra = true;
+	guiTexture.texture = texturaOver;
 
 }
  
@@ -20,14 +23,23 @@ function OnMouseExit(){
 	Screen.showCursor = true;
 	cursorImagen=false;
 	encimaBarra=false;
+	guiTexture.texture = texturaOut;
+
+
 
 }
  
 function OnMouseDown(){
+	//Clear
+	if (tipoBoton == -1) {
+		crearTipoObjeto = -1;
+	}
+	//Play
 	if (tipoBoton==1) {
 		bola.constantForce.enabled = true;
 
 	}
+	
 	if (tipoBoton == 2) {
 		crearTipoObjeto = 2;
 	}
