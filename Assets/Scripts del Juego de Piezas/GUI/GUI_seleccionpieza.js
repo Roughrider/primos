@@ -47,16 +47,18 @@ function OnMouseDown(){
 	if (tipoBoton == 3) {
 		crearTipoObjeto = 3;
 	}
-	
-	Debug.Log("clicked " +crearTipoObjeto);
+
 }
 
 
 function OnGUI() {
+
 	if (cursorImagen) {
+	
 		var mousePos : Vector3 = Input.mousePosition;
 		GUI.depth = -2;
 		var pos : Rect = Rect(mousePos.x,Screen.height - mousePos.y,cursorImage.width,cursorImage.height);
 		GUI.Label(pos,cursorImage);
+		
 	}
 }

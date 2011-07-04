@@ -5,12 +5,10 @@ var texturaOnMouse:GUITexture;
 /*Variables para cambiar el tamaño */
 
 function OnMouseOver () {
-	Debug.Log("ENTRA A BARRA");
 	encimaBarra = true;
 }
 
 function OnMouseExit () {
-	Debug.Log("SALE A BARRA");
 	encimaBarra = false;
 }
 

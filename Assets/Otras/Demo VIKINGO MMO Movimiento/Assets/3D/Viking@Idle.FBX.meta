@@ -1,0 +1,141 @@
+fileFormatVersion: 1
+guid: 2b6e541d3f04e8b4faac59b69a74ed62
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.01
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 0
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 2
+    splitAnimations: 1
+  nodeInfo:
+    CATRigHub002:
+    - 100000
+    - 400000
+    CATRigRLeg1:
+    - 100002
+    - 400002
+    CATRigRLeg2:
+    - 100004
+    - 400004
+    CATRigLLeg2:
+    - 100006
+    - 400006
+    CATRigSpine2:
+    - 100008
+    - 400008
+    Shield:
+    - 100010
+    - 400010
+    - 3300000
+    - 2300000
+    CATRigLArm2:
+    - 100012
+    - 400012
+    CATRigLLeg1:
+    - 100014
+    - 400014
+    CATRigSpine:
+    - 100016
+    - 400016
+    CATRigHub003:
+    - 100018
+    - 400018
+    //RootNode:
+    - 100020
+    - 400020
+    - 11100000
+    CATRigLArmPalm:
+    - 100022
+    - 400022
+    Axe:
+    - 100024
+    - 400024
+    - 3300002
+    - 2300002
+    BaseHuman:
+    - 100026
+    - 400026
+    - 13700000
+    CATRigLLegAnkle:
+    - 100028
+    - 400028
+    CATRigLArm1:
+    - 100030
+    - 400030
+    Character001:
+    - 100032
+    - 400032
+    CATRigRLegAnkle:
+    - 100034
+    - 400034
+    CATRigHub001:
+    - 100036
+    - 400036
+    CATRigRArm1:
+    - 100038
+    - 400038
+    CATRigRArmPalm:
+    - 100040
+    - 400040
+    CATRigRArm2:
+    - 100042
+    - 400042
+    CATRigLLegPlatform:
+    - 100044
+    - 400044
+    CATRigSpineCATRigSpine1:
+    - 100046
+    - 400046
+    CATRigLArmCollarbone:
+    - 100048
+    - 400048
+    CATRigRLegPlatform:
+    - 100050
+    - 400050
+    CATRigRArmCollarbone:
+    - 100052
+    - 400052
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: BaseHuman
+    4300002: Axe
+    4300004: Shield
+    7400000: Take 001 //// Viking@Idle
+    7400002: Take 001 //// Character001
+    7400004: Take 001 //// CATRigHub001
+    7400006: Take 001 //// CATRigLLeg1
+    7400008: Take 001 //// CATRigLLeg2
+    7400010: Take 001 //// CATRigLLegAnkle
+    7400012: Take 001 //// CATRigRLeg1
+    7400014: Take 001 //// CATRigRLeg2
+    7400016: Take 001 //// CATRigRLegAnkle
+    7400018: Take 001 //// CATRigSpineCATRigSpine1
+    7400020: Take 001 //// CATRigSpine2
+    7400022: Take 001 //// CATRigHub002
+    7400024: Take 001 //// CATRigSpine
+    7400026: Take 001 //// CATRigHub003
+    7400028: Take 001 //// CATRigLArmCollarbone
+    7400030: Take 001 //// CATRigLArm1
+    7400032: Take 001 //// CATRigLArm2
+    7400034: Take 001 //// CATRigLArmPalm
+    7400036: Take 001 //// CATRigRArmCollarbone
+    7400038: Take 001 //// CATRigRArm1
+    7400040: Take 001 //// CATRigRArm2
+    7400042: Take 001 //// CATRigRArmPalm
+    7400044: Take 001 //// CATRigLLegPlatform
+    7400046: Take 001 //// CATRigRLegPlatform

@@ -1,0 +1,122 @@
+fileFormatVersion: 1
+guid: 4a5814e1d7d92b94ca4864d5a22e4718
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.01
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 0
+  nodeInfo:
+    //RootNode:
+    - 100000
+    - 400000
+    - 11100000
+    Shield:
+    - 100002
+    - 400002
+    - 3300000
+    - 2300000
+    CATRigRArmPalm:
+    - 100004
+    - 400004
+    CATRigRArm2:
+    - 100006
+    - 400006
+    CATRigRArm1:
+    - 100008
+    - 400008
+    Axe:
+    - 100010
+    - 400010
+    - 3300002
+    - 2300002
+    CATRigLArmPalm:
+    - 100012
+    - 400012
+    CATRigLArm2:
+    - 100014
+    - 400014
+    CATRigLArm1:
+    - 100016
+    - 400016
+    CATRigHub003:
+    - 100018
+    - 400018
+    CATRigSpine:
+    - 100020
+    - 400020
+    CATRigHub002:
+    - 100022
+    - 400022
+    CATRigSpine2:
+    - 100024
+    - 400024
+    CATRigRLegAnkle:
+    - 100026
+    - 400026
+    CATRigRLeg2:
+    - 100028
+    - 400028
+    CATRigRLeg1:
+    - 100030
+    - 400030
+    CATRigLLegAnkle:
+    - 100032
+    - 400032
+    CATRigLLeg2:
+    - 100034
+    - 400034
+    CATRigLLeg1:
+    - 100036
+    - 400036
+    CATRigHub001:
+    - 100038
+    - 400038
+    Character001:
+    - 100040
+    - 400040
+    BaseHuman:
+    - 100042
+    - 400042
+    - 13700000
+    CATRigLLegPlatform:
+    - 100044
+    - 400044
+    CATRigRArmCollarbone:
+    - 100046
+    - 400046
+    CATRigLArmCollarbone:
+    - 100048
+    - 400048
+    CATRigSpineCATRigSpine1:
+    - 100050
+    - 400050
+    CATRigRLegPlatform:
+    - 100052
+    - 400052
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: BaseHuman
+    4300002: Axe
+    4300004: Shield
+    7400000: Take 001 //// Viking
+    7400002: Take 001 //// Character001
+    7400004: Take 001 //// CATRigHub001
+    7400006: Take 001 //// CATRigLLegPlatform
+    7400008: Take 001 //// CATRigRLegPlatform
