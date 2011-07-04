@@ -19,7 +19,8 @@ function Start() {
 function FixedUpdate () {
    var posicion :Vector3 = camaraPrincipal.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x,Input.mousePosition.y,25));
 	posicion.z = 0;
-//	Debug.Log("POSICION : " +posicion +"   RATON : " +Input.mousePosition );
+
+	//Botones de crear piezas
 	if (!EstaEnCimaDeGUI()) {
 		if (GUI_seleccionpieza1.crearTipoObjeto == 2 ) {
 		
@@ -27,6 +28,9 @@ function FixedUpdate () {
 			ultimoCreado = Instantiate(vigaHorizontal, posicion, vigaHorizontal.transform.rotation);
 			GUI_seleccionpieza1.crearTipoObjeto = 0;
 			creando = true;
+			objetosCreados.Push(ultimoCreado);
+			return;
+			
 		}
 		
 		if (GUI_seleccionpieza2.crearTipoObjeto == 3 ) {
@@ -36,39 +40,28 @@ function FixedUpdate () {
 			
 			GUI_seleccionpieza2.crearTipoObjeto = 0;
 			creando = true;
+			objetosCreados.Push(ultimoCreado);
+			return;
 		}
 		
-		objetosCreados.Push(ultimoCreado);
-	}
+		
+		
+	}// Else para si tenemos una pieza seleccionada y volvemos a la barra de herramientas, la eliminamos.
 	else {
+	
 		if (ultimoCreado != null && !ultimoCreado.GetComponent(ObjetosEscenario).colocada) {
+		
 			Destroy(ultimoCreado);
 			creando=false;
 			Screen.showCursor = true;
 			objetosCreados.Pop();
+			
 		}
-
-	
+		
 	}
 	
-	if (creando){
-				
-		if(Input.GetMouseButtonUp(0))	{
-			Debug.Log("Crear Piezas SALE");
-			ultimoCreado.GetComponent(ObjetosEscenario).colocada=true;
-			ultimoCreado.GetComponent(ObjetosEscenario).rotando=false;
-			ultimoCreado.GetComponent(ObjetosEscenario).congela=true;
-	
-			Screen.showCursor = true;
-			ultimoCreado.rigidbody.useGravity = true;
-			ultimoCreado.rigidbody.isKinematic =false;
-			ultimoCreado.rigidbody.detectCollisions = true;
-			creando = false;
-		}
-	
-	}
-	
-		//Boton especial clear
+	//Boton especial clear, el boton de play lleva su propio script que cuando es pulsado le aplica la fuerza por eso no aparece aqui
+	// Esta en el script de GUI_seleccionpieza. En concreto esta aqui por que este script es el que crea las piezas y tiene el array de las mimas
 	if (GUI_Clear.crearTipoObjeto == -1)  {
 		GUI_Clear.crearTipoObjeto = 0;
 		for (var obj : GameObject in objetosCreados) {
@@ -76,6 +69,34 @@ function FixedUpdate () {
 		}
 			
 	}
+	
+	if (creando){
+		//Si hemos seleccionado ya la pieza y la soltamos y no esta colisionando nada		
+		if(Input.GetMouseButtonUp(0) && !ultimoCreado.GetComponent(ObjetosEscenario).colisionando)	{
+		
+			ultimoCreado.GetComponent(ObjetosEscenario).congela=true;
+			ultimoCreado.GetComponent(ObjetosEscenario).colocada=true;
+			ultimoCreado.GetComponent(ObjetosEscenario).rotando=false;
+			
+			Screen.showCursor = true;
+			//Le quitamos que sea trigger y lo pones a que sea collision
+			ultimoCreado.GetComponent(BoxCollider).isTrigger= false;
+
+			ultimoCreado.rigidbody.useGravity = true;
+			ultimoCreado.rigidbody.isKinematic =false;
+			creando = false;
+			
+		//Si hemos pulsado pero estaba colisionando reseteamos el retardo de espera en rotacion ( para que si le pinchamos una vez basica no rote un poco y simplemente deje caer lap pieza)
+		} else if (Input.GetMouseButtonUp(0)){
+		
+			ultimoCreado.GetComponent(ObjetosEscenario).retardadoYa=false;
+			ultimoCreado.GetComponent(ObjetosEscenario).retardo=0;
+			
+		}
+	
+	}
+	
+	
 }
 
 function EstaEnCimaDeGUI() {
