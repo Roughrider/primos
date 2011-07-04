@@ -9,6 +9,7 @@ var camaraPrincipal:Camera;
 var creando:boolean= false;
 var ultimoCreado:GameObject;
 var objetosCreados:Array;
+var bola:GameObject;
 
 
 function Start() { 
@@ -67,6 +68,11 @@ function FixedUpdate () {
 		for (var obj : GameObject in objetosCreados) {
 			Destroy(obj);
 		}
+		
+		bola.transform.position = Vector3(-13.79886, 9.345392,0);
+		bola.constantForce.enabled = false;
+		bola.rigidbody.velocity = Vector3(0,0,0);
+		bola.rigidbody.angularVelocity = Vector3(0,0,0);
 			
 	}
 	
