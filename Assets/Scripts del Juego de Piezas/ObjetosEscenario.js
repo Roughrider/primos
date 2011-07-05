@@ -10,23 +10,27 @@ var retardo : float = 0; //Retardo para que con un simple click no rote
 var retardoRotacion = 0.03;
 var retardadoYa = false;
 var colisionando = false;
+var juego:GameObject;
+var scriptCrearPiezas:CrearPiezas;
 
 function Start() {
 	camaraPrincipal =  GameObject.Find("Camara");
+	juego = GameObject.Find("_Juego");
+	scriptCrearPiezas = juego.GetComponent(CrearPiezas);
 }
 
 function FixedUpdate () {
 
 	if (!colocada) {
-		if(!Input.GetMouseButton(0)) {
+	
 		
-			var posicion :Vector3 =camaraPrincipal.camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x,Input.mousePosition.y,25));
-			posicion.z =0;
+		var posicion :Vector3 =camaraPrincipal.camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x,Input.mousePosition.y,25));
+		posicion.z =0;
 			
-			transform.position = posicion;
+		transform.position = posicion;
 		
-		} else  {
 		
+		if(Input.GetMouseButton(0)) {
 			if (!congela) {
 			
 				retardo += Time.deltaTime;
@@ -38,7 +42,6 @@ function FixedUpdate () {
 				}
 				
 			}
-						
 		}		
 	}
 }
@@ -60,4 +63,25 @@ function OnTriggerStay(collision : Collider) {
 
 function OnTriggerExit(collision : Collider) {
 	colisionando = false;
+}
+
+function OnMouseDown() {
+	if (scriptCrearPiezas.GUI_Delete.crearTipoObjeto == 4) {
+		var index:int = BuscarArray(scriptCrearPiezas.objetosCreados,this);
+		scriptCrearPiezas.objetosCreados.RemoveAt(index);
+		Destroy(transform.gameObject);
+		scriptCrearPiezas.creando = false;
+		Screen.showCursor = true;
+		
+	}
+}
+
+function BuscarArray(array, object) {
+	var index:int = 0;
+	for (var obj : GameObject in array) {
+		if (obj ==object) {
+			return index;
+		}
+		index++;
+	}
 }

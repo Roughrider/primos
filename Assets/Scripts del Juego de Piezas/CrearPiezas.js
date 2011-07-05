@@ -1,7 +1,9 @@
 var GUI_Barra:GUI_barra;
+var GUI_Play:GUI_seleccionpieza;
 var GUI_seleccionpieza1:GUI_seleccionpieza; //Script del primer boton - Viga Horizontal
 var GUI_seleccionpieza2:GUI_seleccionpieza;//Script del segundo boton - Viga Vertical
-var GUI_Clear:GUI_seleccionpieza;//Script del segundo boton - Viga Vertical
+var GUI_Clear:GUI_seleccionpieza;//Script de eliminar todo
+var GUI_Delete:GUI_seleccionpieza;//Script de eliminar todo
 
 var vigaHorizontal : GameObject;
 var vigaVertical : GameObject;
@@ -23,8 +25,13 @@ function FixedUpdate () {
 
 	//Botones de crear piezas
 	if (!EstaEnCimaDeGUI()) {
-		if (GUI_seleccionpieza1.crearTipoObjeto == 2 ) {
+	
+		if (GUI_Play.crearTipoObjeto==1) {
+			GUI_Delete.crearTipoObjeto = 0;
+		}
 		
+		if (GUI_seleccionpieza1.crearTipoObjeto == 2 ) {
+			GUI_Delete.crearTipoObjeto = 0;
 			Screen.showCursor = false;
 			ultimoCreado = Instantiate(vigaHorizontal, posicion, vigaHorizontal.transform.rotation);
 			GUI_seleccionpieza1.crearTipoObjeto = 0;
@@ -35,7 +42,7 @@ function FixedUpdate () {
 		}
 		
 		if (GUI_seleccionpieza2.crearTipoObjeto == 3 ) {
-		
+			GUI_Delete.crearTipoObjeto = 0;
 			Screen.showCursor = false;
 			ultimoCreado = Instantiate(vigaVertical, posicion, vigaVertical.transform.rotation);
 			
@@ -45,11 +52,16 @@ function FixedUpdate () {
 			return;
 		}
 		
+	
 		
 		
 	}// Else para si tenemos una pieza seleccionada y volvemos a la barra de herramientas, la eliminamos.
 	else {
 	
+		//Por si tenemos seleccionado borrar y volvemos a la barra de herramientas 
+		Screen.showCursor = true;
+		GUI_Delete.crearTipoObjeto = 0;
+
 		if (ultimoCreado != null && !ultimoCreado.GetComponent(ObjetosEscenario).colocada) {
 		
 			Destroy(ultimoCreado);
