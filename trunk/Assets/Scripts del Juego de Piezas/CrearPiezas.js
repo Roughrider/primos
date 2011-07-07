@@ -13,6 +13,8 @@ var ultimoCreado:GameObject;
 var objetosCreados:Array;
 var bola:GameObject;
 
+var scriptConfigEscenario:ConfigEscenario;
+
 
 function Start() { 
 	objetosCreados = new Array();
@@ -26,12 +28,18 @@ function FixedUpdate () {
 	//Botones de crear piezas
 	if (!EstaEnCimaDeGUI()) {
 	
+	
+	
 		if (GUI_Play.crearTipoObjeto==1) {
 			GUI_Delete.crearTipoObjeto = 0;
+			GUI_Clear.crearTipoObjeto = 0;
 		}
 		
-		if (GUI_seleccionpieza1.crearTipoObjeto == 2 ) {
+		if (GUI_seleccionpieza1.crearTipoObjeto == 2 && scriptConfigEscenario.numPiezasVerticalesActuales < scriptConfigEscenario.numPiezasVerticales) {
+			scriptConfigEscenario.numPiezasVerticalesActuales++;
 			GUI_Delete.crearTipoObjeto = 0;
+			GUI_Play.crearTipoObjeto = 0;
+			GUI_Clear.crearTipoObjeto = 0;
 			Screen.showCursor = false;
 			ultimoCreado = Instantiate(vigaHorizontal, posicion, vigaHorizontal.transform.rotation);
 			GUI_seleccionpieza1.crearTipoObjeto = 0;
@@ -41,8 +49,11 @@ function FixedUpdate () {
 			
 		}
 		
-		if (GUI_seleccionpieza2.crearTipoObjeto == 3 ) {
+		if (GUI_seleccionpieza2.crearTipoObjeto == 3 && scriptConfigEscenario.numPiezasHorizontalesActuales < scriptConfigEscenario.numPiezasHorizontales) {
+			scriptConfigEscenario.numPiezasHorizontalesActuales++;
+			GUI_Play.crearTipoObjeto = 0;
 			GUI_Delete.crearTipoObjeto = 0;
+			GUI_Clear.crearTipoObjeto = 0;
 			Screen.showCursor = false;
 			ultimoCreado = Instantiate(vigaVertical, posicion, vigaVertical.transform.rotation);
 			
@@ -59,8 +70,10 @@ function FixedUpdate () {
 	else {
 	
 		//Por si tenemos seleccionado borrar y volvemos a la barra de herramientas 
-		Screen.showCursor = true;
-		GUI_Delete.crearTipoObjeto = 0;
+		if (EstaEncimaDeBotonesMenosEliminar()) {
+			Screen.showCursor = true;
+			GUI_Delete.crearTipoObjeto = 0;
+		}
 
 		if (ultimoCreado != null && !ultimoCreado.GetComponent(ObjetosEscenario).colocada) {
 		
@@ -85,8 +98,11 @@ function FixedUpdate () {
 		bola.constantForce.enabled = false;
 		bola.rigidbody.velocity = Vector3(0,0,0);
 		bola.rigidbody.angularVelocity = Vector3(0,0,0);
-			
+		GUI_Clear.crearTipoObjeto = 0;
+		scriptConfigEscenario.numPiezasVerticalesActuales = 0;
+		scriptConfigEscenario.numPiezasHorizontalesActuales = 0;
 	}
+	
 	
 	if (creando){
 		//Si hemos seleccionado ya la pieza y la soltamos y no esta colisionando nada		
@@ -119,6 +135,10 @@ function FixedUpdate () {
 
 function EstaEnCimaDeGUI() {
 	
-	return (GUI_Barra.encimaBarra || GUI_seleccionpieza1.encimaBarra || GUI_seleccionpieza2.encimaBarra);
+	return (GUI_Barra.encimaBarra || GUI_seleccionpieza1.encimaBarra || GUI_seleccionpieza2.encimaBarra || GUI_Clear.encimaBarra || GUI_Play.encimaBarra || GUI_Delete.encimaBarra);
 
+}
+
+function EstaEncimaDeBotonesMenosEliminar() {
+	return (GUI_Clear.encimaBarra || GUI_Play.encimaBarra || GUI_seleccionpieza1.encimaBarra || GUI_seleccionpieza2.encimaBarra);
 }
